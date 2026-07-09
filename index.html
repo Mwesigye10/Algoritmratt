@@ -4,140 +4,142 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b0f14">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Algoritmrätt">
 <title>Algoritmrätt — Förstå och överklaga automatiska beslut</title>
-<meta name="description" content="Gratis verktyg från Klara Steg Insyn. Ta reda på om en algoritm var inblandad i ditt myndighetsbeslut, och skriv en invändning på minuter.">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0b0f14; --surface:#131820; --surface2:#1a2230; --border:#1e2d3d;
-  --text:#dde4ed; --muted:#7488a0; --accent:#4a90b8; --warm:#c8a96e;
-  --alert:#c9694a; --safe:#3a8f6e;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0b0f14; --surface: #131820; --surface2: #1a2230; --border: #1e2d3d;
+  --text: #dde4ed; --muted: #5a7080; --accent: #4a90b8; --accent-warm: #c8a96e;
+  --alert: #e05c3a; --safe: #3a8f6e;
 }
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-weight:300;line-height:1.65;min-height:100vh}
-a{color:inherit}
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 2.2rem;background:rgba(11,15,20,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;letter-spacing:.02em;text-decoration:none;color:var(--text)}
-.nav-logo span{color:var(--accent);font-style:italic}
-.nav-badge{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:.2rem .55rem;border-radius:3px;margin-left:.6rem}
-nav ul{display:flex;gap:1.8rem;list-style:none}
-nav a.link{font-size:.8rem;text-decoration:none;color:var(--muted)}
-nav a.link:hover{color:var(--text)}
-.nav-cta{background:var(--accent);color:var(--bg)!important;padding:.5rem 1.1rem;border-radius:4px;font-weight:500}
-@media (max-width:720px){nav ul{display:none}}
-
-.hero{position:relative;padding:9.5rem 2.2rem 3.5rem;max-width:820px;margin:0 auto;text-align:left}
-.hero-eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
-.hero h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,5.5vw,3.4rem);line-height:1.15;margin-bottom:1.2rem}
-.hero h1 em{font-style:italic;color:var(--warm)}
-.hero-sub{color:var(--muted);font-size:1.02rem;max-width:56ch;margin-bottom:2rem}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{background:var(--accent);color:var(--bg);padding:.85rem 1.6rem;border:none;border-radius:4px;font-family:'Inter',sans-serif;font-size:.92rem;font-weight:500;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .15s}
-.btn-primary:hover{transform:translateY(-1px)}
-.btn-ghost{border:1px solid var(--border);color:var(--text);padding:.85rem 1.6rem;border-radius:4px;background:none;font-family:'Inter',sans-serif;font-size:.92rem;cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .2s,transform .15s}
-.btn-ghost:hover{border-color:var(--accent);transform:translateY(-1px)}
-
-.ticker{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.75rem 0;overflow:hidden;white-space:nowrap}
-.ticker-inner{display:inline-flex;gap:3.5rem;animation:ticker 30s linear infinite}
-.ticker-item{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.ticker-item span{color:var(--accent);margin-right:.5rem}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* EXPLAINER — vad gör appen */
-.explainer{max-width:820px;margin:0 auto;padding:4.5rem 2.2rem;border-bottom:1px solid var(--border)}
-.explainer h2{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.7rem,3.5vw,2.2rem);margin-bottom:2rem}
-.explainer h2 em{font-style:italic;color:var(--accent)}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-@media (max-width:720px){.steps-grid{grid-template-columns:1fr}}
-.step-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.6rem}
-.step-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.6rem;color:var(--warm);margin-bottom:.6rem;display:block}
-.step-box h3{font-size:.95rem;font-weight:500;margin-bottom:.5rem}
-.step-box p{font-size:.85rem;color:var(--muted)}
-.explainer-note{margin-top:2rem;font-size:.85rem;color:var(--muted);max-width:60ch}
-
-#checker{max-width:820px;margin:0 auto;padding:5rem 2.2rem}
-.checker-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:300;margin-bottom:.6rem;line-height:1.2}
-.checker-title em{font-style:italic;color:var(--accent)}
-.checker-sub{color:var(--muted);font-size:.9rem;margin-bottom:2.2rem;line-height:1.7;max-width:60ch}
-.system-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:2rem}
-.system-card{background:var(--surface);padding:1.3rem 1.1rem;cursor:pointer;transition:background .18s;position:relative}
-.system-card:hover{background:var(--surface2)}
-.system-card.active{background:var(--surface2);outline:1px solid var(--accent);outline-offset:-1px}
-.system-card.active::after{content:'✓';position:absolute;top:.6rem;right:.75rem;font-size:.7rem;color:var(--accent)}
-.system-name{font-size:.82rem;font-weight:500;margin-bottom:.2rem}
-.system-country{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-
-#result{display:none;margin-top:1rem}
-#result.show{display:block}
-.result-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;margin-bottom:1.2rem}
-.right-card{background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--accent);border-radius:4px;padding:1.1rem 1.3rem;margin-bottom:.9rem}
-.right-card .label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem;display:block}
-.right-card p{font-size:.87rem;color:var(--muted)}
-.step-list{margin-top:1.6rem}
-.step-item{display:flex;gap:1rem;padding:1rem 0;border-top:1px solid var(--border)}
-.step-item-num{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--warm);font-size:1.1rem;min-width:1.4rem}
-.step-item-text{font-size:.88rem;color:var(--text)}
-.step-item-text strong{color:var(--text)}
-.step-deadline{font-size:.72rem;color:var(--alert);margin-top:.35rem}
-
-/* LETTER FORM */
-#letter{max-width:820px;margin:0 auto;padding:5rem 2.2rem;border-top:1px solid var(--border)}
-.letter-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:300;margin-bottom:.6rem}
-.letter-title em{font-style:italic;color:var(--accent)}
-.letter-sub{color:var(--muted);font-size:.9rem;margin-bottom:2.2rem;max-width:60ch}
-.form-group{margin-bottom:1.3rem}
-.form-group label{display:block;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
-.form-group input,.form-group textarea{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.8rem 1rem;color:var(--text);font-family:'Inter',sans-serif;font-size:.92rem}
-.form-group textarea{min-height:100px;resize:vertical}
-.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--accent)}
-.divider{border:none;border-top:1px solid var(--border);margin:2rem 0}
-.letter-output{display:none;margin-top:2.5rem}
-.letter-output.show{display:block}
-.letter-box{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.8rem;font-family:'Inter',monospace,sans-serif;font-size:.83rem;white-space:pre-wrap;line-height:1.75;color:var(--text);margin-bottom:1.2rem;max-height:480px;overflow-y:auto}
-.letter-actions{display:flex;gap:1rem;flex-wrap:wrap}
-
-/* GDPR + DISCLAIMER */
-.legal-section{max-width:820px;margin:0 auto;padding:4.5rem 2.2rem;border-top:1px solid var(--border)}
-.legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-@media (max-width:720px){.legal-grid{grid-template-columns:1fr}}
-.legal-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.6rem}
-.legal-card h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.15rem;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
-.legal-card p{font-size:.85rem;color:var(--muted);margin-bottom:.7rem}
-.legal-card p:last-child{margin-bottom:0}
-.legal-card ul{margin:.5rem 0 .5rem 1.1rem;font-size:.85rem;color:var(--muted)}
-.legal-card li{margin-bottom:.35rem}
-
-footer{max-width:820px;margin:0 auto;padding:3.5rem 2.2rem 3rem;border-top:1px solid var(--border);text-align:center}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:.5rem}
-.footer-logo span{color:var(--accent);font-style:italic}
-footer p{font-size:.78rem;color:var(--muted);margin-bottom:.3rem}
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 2.5rem; background: rgba(11,15,20,0.95); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+.nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; letter-spacing: 0.03em; color: var(--text); text-decoration: none; }
+.nav-logo span { color: var(--accent); font-style: italic; }
+.nav-badge { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); border: 1px solid var(--accent); padding: 0.2rem 0.6rem; border-radius: 2px; opacity: 0.7; }
+nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+nav ul a { color: var(--muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+nav ul a:hover { color: var(--text); }
+.nav-cta { background: var(--accent) !important; color: #0b0f14 !important; padding: 0.4rem 1rem; border-radius: 2px; font-weight: 500 !important; }
+.hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8rem 2.5rem 5rem; text-align: center; position: relative; overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; overflow: hidden; pointer-events: none; opacity: 0.07; }
+.hero-grid svg { width: 100%; height: 100%; }
+.hero-eyebrow { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; opacity: 0.85; position: relative; }
+.hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 6.5vw, 5rem); font-weight: 300; line-height: 1.07; letter-spacing: -0.01em; margin-bottom: 1.8rem; max-width: 780px; position: relative; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 0.98rem; color: var(--muted); max-width: 500px; margin: 0 auto 3rem; line-height: 1.75; position: relative; }
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; position: relative; }
+.btn-primary { background: var(--accent); color: #0b0f14; padding: 0.85rem 2rem; border: none; border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+.btn-primary:hover { opacity: 0.87; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--text); padding: 0.85rem 2rem; border: 1px solid var(--border); border-radius: 2px; font-family: 'Inter', sans-serif; font-size: 0.82rem; letter-spacing: 0.07em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+.btn-ghost:hover { border-color: var(--accent); transform: translateY(-1px); }
+.ticker { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 0.8rem 0; overflow: hidden; white-space: nowrap; }
+.ticker-inner { display: inline-flex; gap: 4rem; animation: ticker 28s linear infinite; }
+.ticker-item { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.ticker-item span { color: var(--accent); margin-right: 0.5rem; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.stats { display: flex; justify-content: center; gap: 4rem; padding: 2.5rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+.stat { text-align: center; }
+.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 300; color: var(--accent); display: block; line-height: 1; }
+.stat-label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 0.35rem; }
+#checker { max-width: 760px; margin: 0 auto; padding: 6rem 2.5rem; }
+.checker-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300; margin-bottom: 0.6rem; line-height: 1.2; }
+.checker-title em { font-style: italic; color: var(--accent); }
+.checker-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 2.5rem; line-height: 1.7; }
+.system-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 2rem; }
+.system-card { background: var(--surface); padding: 1.4rem 1.2rem; cursor: pointer; transition: background 0.18s; position: relative; }
+.system-card:hover { background: var(--surface2); }
+.system-card.active { background: var(--surface2); outline: 1px solid var(--accent); outline-offset: -1px; }
+.system-card.active::after { content: '✓'; position: absolute; top: 0.6rem; right: 0.8rem; font-size: 0.7rem; color: var(--accent); }
+.system-icon { font-size: 1.3rem; margin-bottom: 0.5rem; display: block; }
+.system-name { font-size: 0.82rem; font-weight: 500; margin-bottom: 0.2rem; }
+.system-country { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.result-panel { display: none; background: var(--surface); border: 1px solid var(--border); border-radius: 2px; overflow: hidden; }
+.result-panel.show { display: block; }
+.result-header { background: var(--surface2); padding: 1.4rem 1.6rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 1rem; }
+.result-status { width: 10px; height: 10px; border-radius: 50%; background: var(--alert); flex-shrink: 0; box-shadow: 0 0 8px rgba(224,92,58,0.5); }
+.result-header h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; }
+.result-body { padding: 1.6rem; }
+.right-block { padding: 1rem 1.2rem; margin-bottom: 0.8rem; border-left: 2px solid var(--accent); background: rgba(74,144,184,0.05); }
+.right-block .right-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; display: block; }
+.right-block p { font-size: 0.83rem; color: var(--text); line-height: 1.6; }
+.action-steps { margin-top: 1.4rem; }
+.action-steps h4 { font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.8rem; }
+.step { display: flex; gap: 0.9rem; align-items: flex-start; padding: 0.8rem 0; border-bottom: 1px solid var(--border); }
+.step:last-child { border-bottom: none; }
+.step-num { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--accent); line-height: 1; flex-shrink: 0; margin-top: 0.1rem; }
+.step-text { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+.step-text strong { color: var(--text); font-weight: 500; }
+.deadline-badge { display: inline-block; margin-top: 0.4rem; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-warm); border: 1px solid rgba(200,169,110,0.3); padding: 0.15rem 0.5rem; border-radius: 1px; }
+.rights-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 6rem 2.5rem; }
+.rights-inner { max-width: 1060px; margin: 0 auto; }
+.section-eyebrow { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; }
+.section-title em { font-style: italic; color: var(--accent); }
+.rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3rem; }
+.right-card { background: var(--surface); padding: 2rem; border-top: 2px solid transparent; transition: border-color 0.2s; }
+.right-card:hover { border-top-color: var(--accent); }
+.right-card .law-ref { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; display: block; }
+.right-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; margin-bottom: 0.6rem; }
+.right-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+#letter { max-width: 720px; margin: 0 auto; padding: 6rem 2.5rem; }
+.letter-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300; margin-bottom: 0.5rem; }
+.letter-sub { color: var(--muted); font-size: 0.88rem; margin-bottom: 2.5rem; line-height: 1.7; }
+.form-group { margin-bottom: 1.5rem; }
+label { display: block; font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.45rem; }
+input[type="text"], input[type="date"], select, textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 0.72rem 0.95rem; font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 300; border-radius: 2px; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+select option { background: var(--surface); }
+textarea { resize: vertical; min-height: 80px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.divider { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+.letter-output { display: none; margin-top: 1.5rem; }
+.letter-output.show { display: block; }
+.upsell-box { margin-top: 1.5rem; background: rgba(201,162,39,0.08); border: 1px solid rgba(201,162,39,0.3); border-radius: 2px; padding: 1.6rem 1.8rem; }
+.upsell-box .upsell-label { font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: #C9A227; margin-bottom: 0.6rem; display: block; }
+.upsell-box p { font-size: 0.83rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+.upsell-box strong { color: var(--text); font-weight: 500; }
+.upsell-box .upsell-cta { display: inline-block; background: #C9A227; color: #0b0f14; padding: 0.7rem 1.4rem; border-radius: 999px; font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; text-decoration: none; }
+.letter-box { background: var(--surface); border: 1px solid var(--border); padding: 2rem; border-radius: 2px; font-size: 0.85rem; line-height: 1.8; color: var(--text); white-space: pre-wrap; font-family: 'Inter', sans-serif; margin-bottom: 1rem; }
+.letter-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+footer { border-top: 1px solid var(--border); padding: 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--muted); }
+.footer-logo span { color: var(--accent); font-style: italic; }
+footer p { font-size: 0.72rem; color: var(--muted); }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+@media (max-width: 680px) { nav ul { display: none; } .form-row { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">Algoritm<span>rätt</span><span class="nav-badge">Gratis</span></a>
+  <a href="#" class="nav-logo">Algoritm<span>rätt</span></a>
+  <div class="nav-badge">EU AI Act · Art. 22</div>
   <ul>
-    <li><a href="#checker" class="link">Kontrollera system</a></li>
-    <li><a href="#letter" class="link">Skriv invändning</a></li>
-    <li><a href="#gdpr" class="link">Dataskydd</a></li>
+    <li><a href="#checker">Kontrollera ditt system</a></li>
+    <li><a href="#rights">Dina rättigheter</a></li>
+    <li><a href="#letter" class="nav-cta">Skriv överklagan</a></li>
   </ul>
 </nav>
 
 <section class="hero">
-  <p class="hero-eyebrow">Gratis · Svenskt · EU AI Act 2025</p>
+  <div class="hero-grid">
+    <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#4a90b8" stroke-width="0.5"/></pattern></defs>
+      <rect width="1200" height="700" fill="url(#grid)"/>
+      <circle cx="300" cy="200" r="3" fill="#4a90b8"/><circle cx="600" cy="350" r="3" fill="#4a90b8"/><circle cx="900" cy="150" r="3" fill="#4a90b8"/><circle cx="480" cy="500" r="3" fill="#4a90b8"/>
+      <line x1="300" y1="200" x2="600" y2="350" stroke="#4a90b8" stroke-width="0.5"/><line x1="600" y1="350" x2="900" y2="150" stroke="#4a90b8" stroke-width="0.5"/><line x1="480" y1="500" x2="600" y2="350" stroke="#4a90b8" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <p class="hero-eyebrow">Gratis · Nordiskt · EU AI Act 2025</p>
   <h1>En algoritm<br>fattade ett <em>beslut</em><br>om dig</h1>
-  <p class="hero-sub">Myndigheter och försäkringsbolag använder i allt högre grad automatiserade system för att förbereda eller fatta beslut om dig. Du har rätt att veta om det hände — och rätt att kräva att en människa granskar det.</p>
+  <p class="hero-sub">Myndigheter och försäkringsbolag använder automatiserade system för att avgöra ditt ärende. Du har rätt att veta det — och rätt att överklaga.</p>
   <div class="hero-actions">
     <a href="#checker" class="btn-primary">Kontrollera ditt system</a>
-    <a href="#letter" class="btn-ghost">Skriv invändning direkt</a>
+    <a href="#letter" class="btn-ghost">Skriv överklagan</a>
   </div>
 </section>
 
@@ -147,74 +149,156 @@ footer p{font-size:.78rem;color:var(--muted);margin-bottom:.3rem}
     <span class="ticker-item"><span>GDPR</span>Art. 22 — Förbud mot automatiska beslut</span>
     <span class="ticker-item"><span>Förvaltningslagen</span>§ 20 — Motiveringsplikt</span>
     <span class="ticker-item"><span>EU AI Act</span>Art. 13 — Transparenskrav</span>
+    <span class="ticker-item"><span>Dataskyddslagen</span>§ 8 — Profileringsförbud</span>
     <span class="ticker-item"><span>EU AI Act</span>Art. 22 — Rätt till mänsklig prövning</span>
     <span class="ticker-item"><span>GDPR</span>Art. 22 — Förbud mot automatiska beslut</span>
     <span class="ticker-item"><span>Förvaltningslagen</span>§ 20 — Motiveringsplikt</span>
+    <span class="ticker-item"><span>EU AI Act</span>Art. 13 — Transparenskrav</span>
+    <span class="ticker-item"><span>Dataskyddslagen</span>§ 8 — Profileringsförbud</span>
   </div>
 </div>
 
-<section class="explainer">
-  <h2 class="reveal">Vad <em>gör</em> Algoritmrätt egentligen?</h2>
-  <div class="steps-grid">
-    <div class="step-box reveal">
-      <span class="step-num">01</span>
-      <h3>Du väljer myndigheten</h3>
-      <p>Du markerar vilken myndighet eller vilket försäkringsbolag som fattade beslutet om dig — t.ex. Försäkringskassan, ett försäkringsbolag eller din kommun.</p>
-    </div>
-    <div class="step-box reveal">
-      <span class="step-num">02</span>
-      <h3>Du får dina rättigheter</h3>
-      <p>Appen visar exakt vilka lagrum som gäller för just det systemet, och konkreta steg du kan ta — inklusive frister.</p>
-    </div>
-    <div class="step-box reveal">
-      <span class="step-num">03</span>
-      <h3>Du får ett färdigt brev</h3>
-      <p>Fyll i några få uppgifter så genererar appen en invändning du kan ladda ner eller kopiera och skicka direkt.</p>
-    </div>
-  </div>
-  <p class="explainer-note reveal">Hela processen tar 2–5 minuter. Du behöver inte förstå juridiken själv — det är precis det appen är till för.</p>
-</section>
+<div class="stats">
+  <div class="stat reveal"><span class="stat-num">68%</span><span class="stat-label">Svenska myndigheter använder AI-screening</span></div>
+  <div class="stat reveal"><span class="stat-num">Art. 22</span><span class="stat-label">EU AI Act — din rätt sedan 2025</span></div>
+  <div class="stat reveal"><span class="stat-num">4 veckor</span><span class="stat-label">Typisk frist för invändning</span></div>
+</div>
 
 <section id="checker">
   <div class="checker-title reveal">Vilket system <em>fattade beslutet?</em></div>
-  <p class="checker-sub reveal">Välj den myndighet eller det bolag som gav dig avslaget eller beslutet. Du får sedan dina konkreta rättigheter och nästa steg.</p>
+  <p class="checker-sub reveal">Välj den myndighet eller det bolag som har gett dig ett avslag eller ett beslut. Vi visar dina konkreta rättigheter och nästa steg.</p>
 
-  <div class="system-cards" id="system-cards">
-    <div class="system-card" data-id="forsakring"><div class="system-name">Försäkringskassan</div><div class="system-country">Statlig myndighet</div></div>
-    <div class="system-card" data-id="forsakringsbolag"><div class="system-name">Försäkringsbolag</div><div class="system-country">Privat aktör</div></div>
-    <div class="system-card" data-id="kommun"><div class="system-name">Kommunal handläggning</div><div class="system-country">Kommun</div></div>
-    <div class="system-card" data-id="ovrigt"><div class="system-name">Annan myndighet</div><div class="system-country">Sverige</div></div>
+  <div class="system-cards reveal">
+    <div class="system-card" onclick="selectSystem(this, 'forsakring')">
+      <span class="system-icon">🏥</span>
+      <div class="system-name">Försäkringskassan</div>
+      <div class="system-country">Sverige</div>
+    </div>
+    <div class="system-card" onclick="selectSystem(this, 'nav')">
+      <span class="system-icon">💼</span>
+      <div class="system-name">NAV</div>
+      <div class="system-country">Norge</div>
+    </div>
+    <div class="system-card" onclick="selectSystem(this, 'kela')">
+      <span class="system-icon">🏛</span>
+      <div class="system-name">Kela</div>
+      <div class="system-country">Finland</div>
+    </div>
+    <div class="system-card" onclick="selectSystem(this, 'kommun')">
+      <span class="system-icon">🏙</span>
+      <div class="system-name">Kommunen</div>
+      <div class="system-country">SE · DK · NO</div>
+    </div>
+    <div class="system-card" onclick="selectSystem(this, 'forsikring')">
+      <span class="system-icon">📋</span>
+      <div class="system-name">Försäkringsbolag</div>
+      <div class="system-country">Norden</div>
+    </div>
+    <div class="system-card" onclick="selectSystem(this, 'skatt')">
+      <span class="system-icon">🧾</span>
+      <div class="system-name">Skatteverket</div>
+      <div class="system-country">Sverige</div>
+    </div>
   </div>
 
-  <div id="result">
-    <div class="result-title" id="result-title"></div>
-    <div id="rights-list"></div>
-    <div class="step-list" id="steps-list"></div>
+  <div class="result-panel reveal" id="result-panel">
+    <div class="result-header">
+      <div class="result-status"></div>
+      <h3 id="result-title">Automatiskt beslut registrerat</h3>
+    </div>
+    <div class="result-body">
+      <div id="rights-blocks"></div>
+      <div class="action-steps">
+        <h4>Dina nästa steg</h4>
+        <div id="steps-list"></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="letter">
-  <div class="letter-title">Skriv din <em>invändning</em></div>
-  <p class="letter-sub">Fyll i uppgifterna nedan. Brevet skapas direkt i din webbläsare — inget skickas till någon server.</p>
+<div class="rights-section">
+  <div class="rights-inner">
+    <p class="section-eyebrow reveal">Rättslig grund</p>
+    <h2 class="section-title reveal">Du har <em>verkliga rättigheter.</em><br>Inte bara på pappret.</h2>
+    <div class="rights-grid reveal">
+      <div class="right-card">
+        <span class="law-ref">EU AI Act · Art. 22</span>
+        <h3>Rätt till mänsklig prövning</h3>
+        <p>Om en algoritm har fattat eller förberett ett beslut som påverkar dig väsentligt, har du rätt att kräva att en människa granskar det.</p>
+      </div>
+      <div class="right-card">
+        <span class="law-ref">GDPR · Art. 22</span>
+        <h3>Förbud mot automatiska beslut</h3>
+        <p>Beslut baserade enbart på automatisk behandling — inklusive profilering — är som utgångspunkt förbjudna. Du kan göra invändning.</p>
+      </div>
+      <div class="right-card">
+        <span class="law-ref">Förvaltningslagen · § 20</span>
+        <h3>Motiveringsplikt</h3>
+        <p>Myndigheter är skyldiga att motivera beslut. "Systemet bedömde" är inte en tillräcklig motivering. Du kan kräva en verklig förklaring.</p>
+      </div>
+      <div class="right-card">
+        <span class="law-ref">EU AI Act · Art. 13</span>
+        <h3>Transparenskrav</h3>
+        <p>System klassificerade som högrisk-AI ska dokumenteras och förklaras. Du har rätt att veta om ett AI-system var inblandat i ditt ärende.</p>
+      </div>
+      <div class="right-card">
+        <span class="law-ref">GDPR · Art. 15</span>
+        <h3>Rätt till tillgång</h3>
+        <p>Du har rätt att se alla uppgifter en myndighet eller ett bolag har behandlat om dig — inklusive de data som låg till grund för algoritmens bedömning.</p>
+      </div>
+      <div class="right-card">
+        <span class="law-ref">EU AI Act · Art. 26</span>
+        <h3>Rätt till förklaring</h3>
+        <p>Vid högrisk-AI-system har du rätt till en meningsfull förklaring av logiken bakom beslutet — inte bara en hänvisning till ett system.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <div class="form-group">
-    <label>Fullständigt namn</label>
-    <input type="text" id="l-name" placeholder="Ditt fullständiga namn">
+<section id="letter">
+  <h2 class="letter-title reveal">Generera din <em>invändning</em></h2>
+  <p class="letter-sub reveal">Fyll i uppgifterna nedan. Vi genererar ett brev som begär mänsklig prövning och insyn i den automatiska behandlingen — en processrättighet, inte en argumentation i sak.</p>
+
+  <div id="letter-form">
+    <div class="form-row reveal">
+      <div class="form-group"><label>Ditt fullständiga namn</label><input type="text" id="l-name" placeholder="Förnamn Efternamn"></div>
+      <div class="form-group"><label>Personnummer</label><input type="text" id="l-cpr" placeholder="XXXXXX-XXXX"></div>
+    </div>
+    <div class="form-group reveal">
+      <label>Myndighet eller bolag</label>
+      <select id="l-authority">
+        <option value="">Välj...</option>
+        <option value="Försäkringskassan">Försäkringskassan</option>
+        <option value="NAV">NAV (Norge)</option>
+        <option value="Kela">Kela (Finland)</option>
+        <option value="Kommunen">Kommunen</option>
+        <option value="Försäkringsbolaget">Försäkringsbolaget</option>
+        <option value="Skatteverket">Skatteverket</option>
+      </select>
+    </div>
+    <div class="form-row reveal">
+      <div class="form-group"><label>Datum för beslut</label><input type="date" id="l-date"></div>
+      <div class="form-group"><label>Ärendenummer (valfritt)</label><input type="text" id="l-case" placeholder="t.ex. 2026-XXXXX"></div>
+    </div>
+    <div class="form-group reveal">
+      <label>Typ av beslut</label>
+      <select id="l-type">
+        <option value="">Välj...</option>
+        <option value="avslag på ersättning">Avslag på ersättning</option>
+        <option value="avslag på LSS-stöd">Avslag på LSS-stöd</option>
+        <option value="reducering av stöd">Reducering av stöd</option>
+        <option value="avslag på försäkringsutbetalning">Avslag på försäkringsutbetalning</option>
+        <option value="skattebesked">Skattebesked</option>
+        <option value="annat beslut">Annat beslut</option>
+      </select>
+    </div>
+    <div class="form-group reveal">
+      <label>Vad önskar du? (valfri precisering)</label>
+      <textarea id="l-wish" placeholder="t.ex. Jag önskar en ny prövning utförd av en människa, samt tillgång till vilka uppgifter som låg till grund för beslutet."></textarea>
+    </div>
+    <hr class="divider">
+    <button class="btn-primary reveal" onclick="generateLetter()" style="width:100%">Generera invändning</button>
   </div>
-  <div class="form-group">
-    <label>E-post eller adress</label>
-    <input type="text" id="l-contact" placeholder="din@email.se eller din adress">
-  </div>
-  <div class="form-group">
-    <label>Myndighet / mottagare</label>
-    <input type="text" id="l-org" placeholder="t.ex. Försäkringskassan, ärendenummer XXX">
-  </div>
-  <div class="form-group">
-    <label>Vad vill du (valfri precisering)</label>
-    <textarea id="l-wish" placeholder="t.ex. Jag önskar en ny prövning utförd av en människa, samt tillgång till vilka uppgifter som låg till grund för beslutet."></textarea>
-  </div>
-  <hr class="divider">
-  <button class="btn-primary" onclick="generateLetter()" style="width:100%">Generera invändning</button>
 
   <div class="letter-output" id="letter-output">
     <div class="letter-box" id="letter-text"></div>
@@ -222,40 +306,19 @@ footer p{font-size:.78rem;color:var(--muted);margin-bottom:.3rem}
       <button class="btn-primary" onclick="downloadLetter()">Ladda ner som .txt</button>
       <button class="btn-ghost" onclick="copyLetter()">Kopiera text</button>
     </div>
-  </div>
-</section>
-
-<section class="legal-section" id="gdpr">
-  <div class="legal-grid">
-    <div class="legal-card reveal">
-      <h3>🔒 Dataskydd &amp; GDPR</h3>
-      <p>Algoritmrätt är byggd för att inte samla in dina personuppgifter.</p>
-      <ul>
-        <li>Allt du skriver bearbetas lokalt i din webbläsare — inget skickas till eller lagras på någon server.</li>
-        <li>Vi använder inga cookies, ingen spårning och inga tredjepartsanalyser.</li>
-        <li>Det brev du genererar finns bara på din egen enhet tills du väljer att ladda ner eller kopiera det.</li>
-        <li>Stänger du fliken försvinner all information — inget sparas hos oss.</li>
-      </ul>
-      <p>Detta är i linje med dataminimeringsprincipen i GDPR Art. 5(1)(c): vi behandlar inte mer data än vad som är nödvändigt — i det här fallet ingenting alls.</p>
-    </div>
-    <div class="legal-card reveal">
-      <h3>⚖️ Ansvarsfriskrivning</h3>
-      <p>Algoritmrätt ger allmän information och ett brevmall — det är inte juridisk rådgivning.</p>
-      <ul>
-        <li>Vi garanterar inte att din invändning leder till ett visst resultat.</li>
-        <li>Lagrum och frister kan ändras. Kontrollera alltid aktuell information hos berörd myndighet.</li>
-        <li>Vid komplexa eller allvarliga ärenden rekommenderar vi att du anlitar en jurist eller använder ett fullständigt Insyn-analysmodul.</li>
-        <li>Klara Steg ansvarar inte för konsekvenser av hur brevet används.</li>
-      </ul>
-      <p>Verktyget är byggt för att göra dig bättre rustad — inte för att ersätta professionell juridisk hjälp i svåra fall.</p>
+    <div class="upsell-box">
+      <span class="upsell-label">Viktigt att veta</span>
+      <p>Det här brevet begär <strong>mänsklig prövning och insyn i den automatiska behandlingen</strong> — det är en process­mässig rättighet, separat från själva sakfrågan. Brevet argumenterar inte för <strong>varför</strong> beslutet är fel i sak.</p>
+      <p>Om du vill bestrida själva innehållet i beslutet — t.ex. om du faktiskt uppfyller kraven för det du sökt — kräver det en genomgång av din specifika situation mot gällande lagstiftning.</p>
+      <a href="https://insyn.klarasteg.se/app/" target="_blank" rel="noopener" class="upsell-cta">Analysera sakfrågan hos Insyn →</a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-logo">Algoritm<span>rätt</span></div>
-  <p>En del av Klara Steg · Gratis för alla · Ingen inloggning krävs</p>
-  <p style="font-size:.68rem;color:var(--muted)">EU AI Act · GDPR · Förvaltningslagen</p>
+  <p>En del av Klara Steg · Gratis för alla</p>
+  <p style="font-size:0.68rem; color:var(--muted)">EU AI Act · GDPR · Förvaltningslagen</p>
 </footer>
 
 <script>
@@ -263,125 +326,157 @@ const systems = {
   forsakring: {
     title: 'Försäkringskassan — Automatisk screening',
     rights: [
-      { label: 'EU AI Act Art. 22', text: 'Försäkringskassan kan använda AI-stödda system för att förbereda beslut om t.ex. sjukpenning och assistansersättning. Du har rätt att kräva mänsklig granskning av ditt ärende.' },
-      { label: 'GDPR Art. 22', text: 'Beslut som enbart grundas på automatiserad behandling, inklusive profilering, och som har rättsliga följder för dig, är som huvudregel förbjudna utan ditt uttryckliga samtycke.' }
+      { label: 'EU AI Act Art. 22', text: 'Försäkringskassan använder AI-screening för att förbereda beslut om sjukpenning och assistansersättning. Du har rätt att kräva mänsklig granskning.' },
+      { label: 'GDPR Art. 22', text: 'Beslut baserade på automatisk profilering är förbjudna utan ditt samtycke. Kräv att få veta om AI var inblandad.' }
     ],
     steps: [
-      { text: '<strong>Begär registerutdrag</strong> — be Försäkringskassan skriftligen om alla uppgifter som behandlats i ditt ärende, inklusive eventuella automatiserade bedömningar.', deadline: 'Svar inom 1 månad (GDPR Art. 12.3)' },
-      { text: '<strong>Kräv mänsklig prövning</strong> — skriv att du gör invändning mot ett eventuellt automatiserat beslut och kräver mänsklig handläggning.' },
-      { text: '<strong>Anmäl till IMY</strong> — Integritetsskyddsmyndigheten hanterar GDPR-anmälningar i Sverige. Anmälan är kostnadsfri.', deadline: 'Ingen fast frist' }
+      { num: '1', text: '<strong>Begär registerutdrag</strong> — be Försäkringskassan skriftligen om alla uppgifter som behandlats i ditt ärende, inklusive eventuella algoritmiska bedömningar.', deadline: 'Svar inom 1 månad (GDPR Art. 15)' },
+      { num: '2', text: '<strong>Kräv mänsklig prövning</strong> — skriv att du gör invändning mot automatiska beslut och kräver mänsklig handläggning enl. EU AI Act Art. 22.' },
+      { num: '3', text: '<strong>Anmäl till IMY</strong> — Integritetsskyddsmyndigheten hanterar GDPR-anmälningar i Sverige. Anmälan är gratis.', deadline: 'Ingen fast frist' }
     ]
   },
-  forsakringsbolag: {
-    title: 'Privat försäkringsbolag',
+  nav: {
+    title: 'NAV — Automatisk behandling',
     rights: [
-      { label: 'GDPR Art. 22', text: 'Försäkringsbolag använder ofta algoritmer för riskbedömning och skadereglering. Beslut med väsentliga rättsliga följder får som huvudregel inte fattas helt automatiserat.' },
-      { label: 'Försäkringsavtalslagen', text: 'Du har rätt att få en tydlig motivering till varför en skada avslagits eller ersättningen satts till ett visst belopp.' }
+      { label: 'EU AI Act Art. 22', text: 'NAV använder automatiserade system för riskbedömning och ärendehandläggning. Du har rätt till ett mänskligt beslut.' },
+      { label: 'Förvaltningslagen', text: 'Norsk förvaltningslag kräver motiverade beslut. Algoritmiskt output är inte tillräcklig motivering.' }
     ],
     steps: [
-      { text: '<strong>Begär skriftlig motivering</strong> — bolaget ska kunna förklara grunden för beslutet, inte bara hänvisa till ett system.' },
-      { text: '<strong>Begär registerutdrag</strong> — enligt GDPR Art. 15, inklusive eventuell automatiserad riskprofilering.' },
-      { text: '<strong>Vänd dig till Allmänna reklamationsnämnden (ARN)</strong> — kostnadsfri tvistlösning utanför domstol.', deadline: 'Vanligtvis inom 6 månader från beslut' }
+      { num: '1', text: '<strong>Klaga till NAV Klageinstans</strong> — alla beslut kan överklagas inom 6 veckor.', deadline: '6 veckor från beslutsdatum' },
+      { num: '2', text: '<strong>Kräv tillgång</strong> — begär alla uppgifter NAV behandlat om dig enl. GDPR Art. 15.' },
+      { num: '3', text: '<strong>Datatilsynet Norge</strong> — vid misstanke om olagligt automatiskt beslut kan du anmäla gratis.' }
+    ]
+  },
+  kela: {
+    title: 'Kela — Automatiserad ärendehandläggning',
+    rights: [
+      { label: 'EU AI Act Art. 22', text: 'Kela använder automatiserade system för beslut om grundförmåner. Du har rätt till mänsklig behandling av ditt ärende.' },
+      { label: 'GDPR Art. 22', text: 'Automatiska beslut baserade på profilering kräver ditt uttryckliga samtycke eller en rättslig grund.' }
+    ],
+    steps: [
+      { num: '1', text: '<strong>Begär omprövning</strong> — skicka skriftlig begäran om ny prövning av en mänsklig handläggare.', deadline: '30 dagar från beslut' },
+      { num: '2', text: '<strong>Tietosuojavaltuutettu</strong> — Finlands dataskyddsmyndighet hanterar GDPR-klagomål gratis.' }
     ]
   },
   kommun: {
-    title: 'Kommunal handläggning',
+    title: 'Kommunen — Automatiserat beslut',
     rights: [
-      { label: 'Förvaltningslagen § 20', text: 'Kommunala beslut ska motiveras. Ett automatiserat urvalssystem befriar inte kommunen från motiveringsplikten.' },
-      { label: 'GDPR Art. 22', text: 'Om kommunen använder automatiserade verktyg i handläggningen av t.ex. bistånd eller LSS-insatser gäller samma skydd mot rent automatiserade beslut.' }
+      { label: 'Förvaltningslagen', text: 'Kommunala beslut ska motiveras konkret. Du har rätt att veta om ett digitalt system var involverat i bedömningen.' },
+      { label: 'EU AI Act Art. 22', text: 'Kommunala system som poängsätter eller rangordnar invånare omfattas av AI Act-krav om transparens och mänsklig kontroll.' }
     ],
     steps: [
-      { text: '<strong>Begär skriftligt beslut med motivering</strong> — om du bara fått ett muntligt besked, begär det skriftligt.' },
-      { text: '<strong>Överklaga till förvaltningsrätten</strong> — de flesta kommunala biståndsbeslut kan överklagas.', deadline: 'Vanligtvis 3 veckor från att du fått beslutet' },
-      { text: '<strong>Kontakta IMY</strong> — om du misstänker olaglig automatiserad profilering.' }
+      { num: '1', text: '<strong>Kräv motivering</strong> — begär skriftligen en konkret motivering som inte bara hänvisar till systemets output.', deadline: 'Svar inom 4 veckor' },
+      { num: '2', text: '<strong>Överklaga till Förvaltningsrätten</strong> — kommunala beslut kan överklagas dit.' },
+      { num: '3', text: '<strong>IMY</strong> — vid GDPR-brott kan du anmäla till Integritetsskyddsmyndigheten.' }
     ]
   },
-  ovrigt: {
-    title: 'Annan myndighet eller aktör',
+  forsikring: {
+    title: 'Försäkringsbolag — Algoritmisk riskbedömning',
     rights: [
-      { label: 'EU AI Act Art. 13', text: 'Offentliga och vissa privata aktörer som använder AI-system med hög risk är skyldiga att vara transparenta om det.' },
-      { label: 'GDPR Art. 22', text: 'Rätten att inte bli föremål för ett beslut som enbart grundas på automatiserad behandling gäller generellt inom EU/EES, oavsett vilken myndighet det gäller.' }
+      { label: 'GDPR Art. 22', text: 'Försäkringsbolag får inte basera beslut enbart på automatisk profilering utan ditt samtycke.' },
+      { label: 'EU AI Act Art. 13', text: 'Högrisk-AI-system som används för kredit- och försäkringsbedömningar kräver dokumentation och förklaring.' }
     ],
     steps: [
-      { text: '<strong>Fråga myndigheten direkt</strong> — du har rätt att fråga om ett automatiserat system varit inblandat i ditt beslut.' },
-      { text: '<strong>Begär registerutdrag</strong> — enligt GDPR Art. 15.' },
-      { text: '<strong>Anmäl till IMY</strong> — om du inte får ett tydligt svar eller misstänker att dina rättigheter kränkts.' }
+      { num: '1', text: '<strong>Kräv förklaring</strong> — begär en konkret förklaring av beslutets logik enl. GDPR Art. 22, stk. 3.' },
+      { num: '2', text: '<strong>Anmäl till ARN</strong> — Allmänna reklamationsnämnden hanterar konsumenttvister med försäkringsbolag gratis.', deadline: 'Inom 1 år från avslag' },
+      { num: '3', text: '<strong>IMY</strong> — vid misstanke om olaglig profilering. Anmälan är gratis.' }
+    ]
+  },
+  skatt: {
+    title: 'Skatteverket — Automatisk taxering',
+    rights: [
+      { label: 'Förvaltningslagen', text: 'Automatiska skattebesked ska motiveras. Du har rätt att känna till de konkreta kriterier som tillämpats.' },
+      { label: 'GDPR Art. 22', text: 'Skattemässig profilering ska ha laglig grund och du har rätt till mänsklig prövning.' }
+    ],
+    steps: [
+      { num: '1', text: '<strong>Överklaga till Skatteverket</strong> — lämna in skriftlig invändning och kräv mänsklig granskning.', deadline: '2 månader från beslut' },
+      { num: '2', text: '<strong>Förvaltningsrätten</strong> — vid avslag kan du gå vidare till förvaltningsdomstolen.' }
     ]
   }
 };
 
-document.querySelectorAll('.system-card').forEach(card => {
-  card.addEventListener('click', () => {
-    document.querySelectorAll('.system-card').forEach(c => c.classList.remove('active'));
-    card.classList.add('active');
-    const data = systems[card.dataset.id];
-    document.getElementById('result-title').textContent = data.title;
-    document.getElementById('rights-list').innerHTML = data.rights.map(r =>
-      `<div class="right-card"><span class="label">${r.label}</span><p>${r.text}</p></div>`
-    ).join('');
-    document.getElementById('steps-list').innerHTML = data.steps.map((s,i) =>
-      `<div class="step-item"><div class="step-item-num">${i+1}</div><div class="step-item-text">${s.text}${s.deadline ? `<div class="step-deadline">${s.deadline}</div>` : ''}</div></div>`
-    ).join('');
-    document.getElementById('result').classList.add('show');
-    document.getElementById('result').scrollIntoView({behavior:'smooth', block:'nearest'});
-  });
-});
+let selectedSystem = null;
+
+function selectSystem(el, key) {
+  document.querySelectorAll('.system-card').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  selectedSystem = key;
+  const data = systems[key];
+  document.getElementById('result-title').textContent = data.title;
+  document.getElementById('rights-blocks').innerHTML = data.rights.map(r => `<div class="right-block"><span class="right-label">${r.label}</span><p>${r.text}</p></div>`).join('');
+  document.getElementById('steps-list').innerHTML = data.steps.map(s => `<div class="step"><div class="step-num">${s.num}</div><div class="step-text">${s.text}${s.deadline ? `<div class="deadline-badge">⏱ ${s.deadline}</div>` : ''}</div></div>`).join('');
+  const panel = document.getElementById('result-panel');
+  panel.classList.add('show');
+  panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
 
 let letterContent = '';
-function generateLetter(){
-  const name = document.getElementById('l-name').value.trim() || '[Ditt namn]';
-  const contact = document.getElementById('l-contact').value.trim() || '[Din kontaktuppgift]';
-  const org = document.getElementById('l-org').value.trim() || '[Myndighet / mottagare]';
+
+function generateLetter() {
+  const name = document.getElementById('l-name').value.trim();
+  const cpr = document.getElementById('l-cpr').value.trim();
+  const authority = document.getElementById('l-authority').value;
+  const date = document.getElementById('l-date').value;
+  const caseNo = document.getElementById('l-case').value.trim();
+  const type = document.getElementById('l-type').value;
   const wish = document.getElementById('l-wish').value.trim();
-  const today = new Date().toLocaleDateString('sv-SE');
+  if (!name || !authority || !type) { alert('Fyll i namn, myndighet och beslutstyp.'); return; }
+  const today = new Date().toLocaleDateString('sv-SE', { day: '2-digit', month: 'long', year: 'numeric' });
+  const afgDate = date ? new Date(date).toLocaleDateString('sv-SE', { day: '2-digit', month: 'long', year: 'numeric' }) : '[datum ej angivet]';
 
   letterContent = `${name}
-${contact}
+${cpr ? cpr : ''}
 ${today}
 
-Till: ${org}
+Till: ${authority}
+${caseNo ? 'Ärendenummer: ' + caseNo : ''}
 
-INVÄNDNING MOT AUTOMATISERAT BESLUT
-— med hänvisning till EU AI Act Art. 22 och GDPR Art. 22
+INVÄNDNING MOT AUTOMATISKT BESLUT
+— enl. EU AI Act Art. 22, GDPR Art. 22 och Förvaltningslagen § 20
 
-Jag, ${name}, gör härmed invändning mot det beslut som fattats i mitt ärende, i den mån detta helt eller delvis grundats på automatiserad behandling eller algoritmiskt stöd.
+Jag skriver angående ${type}${afgDate !== '[datum ej angivet]' ? ' av ' + afgDate : ''}.
 
-Jag begär:
-1. Bekräftelse på om ett automatiserat eller AI-stött system varit inblandat i beslutet om mig.
-2. En ny prövning utförd av en människa med behörighet att ompröva beslutet.
-3. Tillgång till de uppgifter och kriterier som legat till grund för beslutet, enligt GDPR Art. 15.
+Jag gör härmed formell invändning mot beslutet och begär följande:
 
-${wish ? 'YTTERLIGARE ÖNSKEMÅL\n' + wish + '\n\n' : ''}Jag förväntar mig svar inom skälig tid, och senast inom en månad enligt GDPR Art. 12.3. Vid avslag önskar jag en skriftlig motivering samt information om mina möjligheter att överklaga eller anmäla ärendet till tillsynsmyndighet.
+1. MÄNSKLIG PRÖVNING
+Jag kräver att mitt ärende återupptas och prövas av en mänsklig handläggare, enl. EU AI Act Art. 22, som ger var och en rätt att inte vara föremål för beslut som enbart grundas på automatisk behandling.
 
-Vid uteblivet eller otillräckligt svar förbehåller jag mig rätten att vända mig till Integritetsskyddsmyndigheten (IMY), imy.se.
+2. TILLGÅNG TILL ALGORITMISK BEHANDLING
+Jag begär skriftlig bekräftelse på om ett automatiserat system, en algoritm eller ett AI-verktyg har deltagit i behandlingen av mitt ärende — inklusive vilka uppgifter som legat till grund, enl. GDPR Art. 15 och EU AI Act Art. 13.
+
+3. MOTIVERING
+Jag begär en konkret och fullständig motivering till beslutet, som inte enbart hänvisar till systemets output, enl. Förvaltningslagen § 20.
+
+${wish ? '4. ÖVRIGA ÖNSKEMÅL\n' + wish + '\n\n' : ''}Jag förväntar svar inom 30 dagar från mottagandet av detta brev, enl. GDPR Art. 12.
+
+Observera att jag vid uteblivet svar eller otillräcklig motivering kommer att anmäla till IMY (Integritetsskyddsmyndigheten) samt använda detta brev som dokumentation i en eventuell överklagan.
 
 Med vänliga hälsningar
 
 ${name}
-${contact}`;
+${cpr ? cpr : ''}`;
 
   document.getElementById('letter-text').textContent = letterContent;
   document.getElementById('letter-output').classList.add('show');
-  document.getElementById('letter-output').scrollIntoView({behavior:'smooth'});
+  document.getElementById('letter-output').scrollIntoView({ behavior: 'smooth' });
 }
 
-function downloadLetter(){
-  const blob = new Blob([letterContent], {type:'text/plain'});
+function downloadLetter() {
+  const blob = new Blob([letterContent], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a'); a.href = url; a.download = `algoritmratt-invandning-${Date.now()}.txt`; a.click();
+  const a = document.createElement('a'); a.href = url; a.download = `algoritmratt-invandn-${Date.now()}.txt`; a.click();
   URL.revokeObjectURL(url);
 }
 
-function copyLetter(){
+function copyLetter() {
   navigator.clipboard.writeText(letterContent).then(() => {
-    const btn = document.querySelector('#letter-output .btn-ghost');
-    const original = btn.textContent;
+    const btn = document.querySelector('.letter-actions .btn-ghost');
     btn.textContent = 'Kopierat ✓';
-    setTimeout(() => btn.textContent = original, 2000);
+    setTimeout(() => btn.textContent = 'Kopiera text', 2000);
   });
 }
 
-const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), {threshold:.08});
+const observer = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
