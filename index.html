@@ -292,10 +292,6 @@ footer p { font-size: 0.72rem; color: var(--muted); }
         <option value="annat beslut">Annat beslut</option>
       </select>
     </div>
-    <div class="form-group reveal">
-      <label>Vad önskar du? (valfri precisering)</label>
-      <textarea id="l-wish" placeholder="t.ex. Jag önskar en ny prövning utförd av en människa, samt tillgång till vilka uppgifter som låg till grund för beslutet."></textarea>
-    </div>
     <hr class="divider">
     <button class="btn-primary reveal" onclick="generateLetter()" style="width:100%">Generera invändning</button>
   </div>
@@ -419,7 +415,6 @@ function generateLetter() {
   const date = document.getElementById('l-date').value;
   const caseNo = document.getElementById('l-case').value.trim();
   const type = document.getElementById('l-type').value;
-  const wish = document.getElementById('l-wish').value.trim();
   if (!name || !authority || !type) { alert('Fyll i namn, myndighet och beslutstyp.'); return; }
   const today = new Date().toLocaleDateString('sv-SE', { day: '2-digit', month: 'long', year: 'numeric' });
   const afgDate = date ? new Date(date).toLocaleDateString('sv-SE', { day: '2-digit', month: 'long', year: 'numeric' }) : '[datum ej angivet]';
@@ -447,7 +442,7 @@ Jag begär skriftlig bekräftelse på om ett automatiserat system, en algoritm e
 3. MOTIVERING
 Jag begär en konkret och fullständig motivering till beslutet, som inte enbart hänvisar till systemets output, enl. Förvaltningslagen § 20.
 
-${wish ? '4. ÖVRIGA ÖNSKEMÅL\n' + wish + '\n\n' : ''}Jag förväntar svar inom 30 dagar från mottagandet av detta brev, enl. GDPR Art. 12.
+Jag förväntar svar inom 30 dagar från mottagandet av detta brev, enl. GDPR Art. 12.
 
 Observera att jag vid uteblivet svar eller otillräcklig motivering kommer att anmäla till IMY (Integritetsskyddsmyndigheten) samt använda detta brev som dokumentation i en eventuell överklagan.
 
