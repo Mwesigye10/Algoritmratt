@@ -135,8 +135,8 @@ footer p { font-size: 0.72rem; color: var(--muted); }
     </svg>
   </div>
   <p class="hero-eyebrow">Gratis · Nordiskt · GDPR &amp; AI-förordningen</p>
-  <h1>En algoritm<br>fattade ett <em>beslut</em><br>om dig</h1>
-  <p class="hero-sub">Myndigheter och försäkringsbolag använder automatiserade system för att avgöra ditt ärende. Du har rätt att veta det — och rätt att invända och kräva mänsklig prövning.</p>
+  <h1>Fattade en algoritm<br>ett <em>beslut</em><br>om dig?</h1>
+  <p class="hero-sub">Myndigheter och bolag använder ibland automatiserade system när de avgör ett ärende. Du har rätt att få veta om det skett — och rätt att kräva en konkret motivering.</p>
   <div class="hero-actions">
     <a href="#checker" class="btn-primary">Kontrollera ditt system</a>
     <a href="#letter" class="btn-ghost">Skriv invändning</a>
@@ -224,12 +224,12 @@ footer p { font-size: 0.72rem; color: var(--muted); }
       <div class="right-card">
         <span class="law-ref">GDPR · Art. 22</span>
         <h3>Rätt till mänsklig prövning</h3>
-        <p>Om en algoritm har fattat eller förberett ett beslut som påverkar dig väsentligt, har du rätt att kräva att en människa granskar det.</p>
+        <p>Fattas ett beslut som påverkar dig väsentligt <em>enbart</em> automatiskt, har du som utgångspunkt rätt till mänsklig prövning. Undantag finns — bl.a. när en myndighet har uttryckligt lagstöd för automatiska beslut. Då gäller i stället alltid din rätt till motivering och till att begära omprövning.</p>
       </div>
       <div class="right-card">
         <span class="law-ref">GDPR · Art. 22</span>
-        <h3>Förbud mot automatiska beslut</h3>
-        <p>Beslut baserade enbart på automatisk behandling — inklusive profilering — är som utgångspunkt förbjudna. Du kan göra invändning.</p>
+        <h3>Automatiska beslut — huvudregel och undantag</h3>
+        <p>Som huvudregel får ett beslut inte fattas <em>enbart</em> automatiskt utan särskild grund. Sådan grund kan dock finnas — t.ex. lagstöd för en myndighet. Du har alltid rätt att få veta om det skett och att kräva en konkret motivering.</p>
       </div>
       <div class="right-card">
         <span class="law-ref">Förvaltningslagen</span>
@@ -247,9 +247,9 @@ footer p { font-size: 0.72rem; color: var(--muted); }
         <p>Du har rätt att se alla uppgifter en myndighet eller ett bolag har behandlat om dig — inklusive de data som låg till grund för algoritmens bedömning.</p>
       </div>
       <div class="right-card">
-        <span class="law-ref">EU:s AI-förordning</span>
-        <h3>Rätt till förklaring</h3>
-        <p>När ett AI-system bedömer dig har du rätt till en meningsfull förklaring av logiken bakom beslutet — inte bara en hänvisning till ett system.</p>
+        <span class="law-ref">GDPR · Art. 15</span>
+        <h3>Rätt till information om logiken</h3>
+        <p>Vid automatiserat beslutsfattande har du rätt till meningsfull information om logiken bakom behandlingen — inte bara en hänvisning till "systemet". EU:s AI-förordning ställer dessutom krav på transparens hos den som använder AI.</p>
       </div>
     </div>
   </div>
@@ -306,6 +306,7 @@ footer p { font-size: 0.72rem; color: var(--muted); }
       <span class="upsell-label">Viktigt att veta</span>
       <p>Det här brevet begär <strong>mänsklig prövning och insyn i den automatiska behandlingen</strong> — det är en process­mässig rättighet, separat från själva sakfrågan. Brevet argumenterar inte för <strong>varför</strong> beslutet är fel i sak.</p>
       <p>Om du vill bestrida själva innehållet i beslutet — t.ex. om du faktiskt uppfyller kraven för det du sökt — kräver det en genomgång av din specifika situation mot gällande lagstiftning.</p>
+      <p><strong>Viktigt om frister:</strong> det här brevet ersätter inte en överklagan av själva beslutet. Har du fått ett avslag löper överklagandefristen vidare oberoende av detta brev — se överklagandehänvisningen i ditt beslut och missa den inte.</p>
       <a href="https://insyn.klarasteg.se/app/" target="_blank" rel="noopener" class="upsell-cta">Analysera sakfrågan hos Insyn →</a>
     </div>
   </div>
@@ -322,8 +323,8 @@ const systems = {
   forsakring: {
     title: 'Försäkringskassan — Automatisk screening',
     rights: [
-      { label: 'GDPR · Art. 22', text: 'Försäkringskassan använder AI-screening för att förbereda beslut om sjukpenning och assistansersättning. Du har rätt att kräva mänsklig granskning.' },
-      { label: 'GDPR Art. 22', text: 'Beslut baserade på automatisk profilering är förbjudna utan ditt samtycke. Kräv att få veta om AI var inblandad.' }
+      { label: 'GDPR · Art. 15', text: 'Du har rätt att få veta om ett automatiserat system eller en algoritm har använts för att förbereda beslutet i ditt ärende — och vilka uppgifter som legat till grund.' },
+      { label: 'GDPR Art. 22', text: 'Helautomatiska beslut kan vara tillåtna om myndigheten har lagstöd för det. Men du har alltid rätt till en konkret motivering och att begära omprövning — och rätt att fråga om automatisk behandling förekommit.' }
     ],
     steps: [
       { num: '1', text: '<strong>Begär registerutdrag</strong> — be Försäkringskassan skriftligen om alla uppgifter som behandlats i ditt ärende, inklusive eventuella algoritmiska bedömningar.', deadline: 'Svar inom 1 månad (GDPR Art. 15)' },
